@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 
 // Create a mongoose schema that will map to a MongoDB collection
 // and define the shape of the documents within that collection.
-const WorkoutSchema = new Schema({
+const workoutSchema = new Schema({
   day: {
     type: Date,
-    default: Date.now,
+    default: Date.now(),
   },
   exercises: [
     {
@@ -40,8 +40,11 @@ const WorkoutSchema = new Schema({
       },
     },
   ],
+  totalDuration: {
+    type: Number,
+  }
 });
 
-const Workout = mongoose.model("Workout", WorkoutSchema);
+const Workout = mongoose.model("Workout", workoutSchema);
 
 module.exports = Workout;

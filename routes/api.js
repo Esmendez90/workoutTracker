@@ -53,4 +53,6 @@ router.post("/api/workouts", ({ body }, res) => {
     });
 });
 
+// Get stats page
+
 module.exports = router;

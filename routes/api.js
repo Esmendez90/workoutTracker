@@ -54,5 +54,6 @@ router.post("/api/workouts", ({ body }, res) => {
 });
 
 // Get stats page
+router.get("/stats")
 
 module.exports = router;

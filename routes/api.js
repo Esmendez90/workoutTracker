@@ -22,21 +22,22 @@ router.get("/api/workouts", (req, res) => {
 router.put("/api/workouts/:id", (req, res) => {
   Workout.findByIdAndUpdate(
     {
-    _id: req.params.id,
+      _id: req.params.id,
     },
     {
       $inc: { totalDuration: req.body.duration },
-      $push: { exercises: req.body }
+      $push: { exercises: req.body },
     },
     { new: true }
-
-  ).then(dbWorkout => {
-    console.log("THIS IS THE PUT DB WORKOUT", dbWorkout);
-    //res.send(dbWorkout);
-    res.json(dbWorkout);
-  }).catch(err => {
-    res.send(err);
-  })
+  )
+    .then((dbWorkout) => {
+      console.log("THIS IS THE PUT DB WORKOUT", dbWorkout);
+      //res.send(dbWorkout);
+      res.json(dbWorkout);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
 });
 
 // Create a workout
@@ -54,6 +55,15 @@ router.post("/api/workouts", ({ body }, res) => {
 });
 
 // Get stats page
-router.get("/stats")
+router.get("/api/workouts/range", (req, res) => {
+  Workout.find({})
+    .then((dbWorkout) => {
+      console.log("Get WORKOUTS", dbWorkout);
+      res.json(dbWorkout);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+});
 
 module.exports = router;

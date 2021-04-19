@@ -1,10 +1,19 @@
 let mongoose = require("mongoose");
 let db = require("../models");
 
+if(process.env.MONGODB_ATLAS.length > 0){
+  mongoose.connect(process.env.MONGODB_ATLAS, {
+    useNewUrlParser: true,
+    useFindAndModify: false
+  });
+
+
+} else{
 mongoose.connect("mongodb://localhost/workout", {
   useNewUrlParser: true,
   useFindAndModify: false
 });
+}
 
 let workoutSeed = [
   {

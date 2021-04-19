@@ -12,10 +12,25 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+//mongodb+srv://esteban_:Meg@deth1@cluster0.dgfzn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+//   useNewUrlParser: true,
+//   useFindAndModify: false
+// });
+if(process.env.MONGODB_ATLAS.length > 0){
+  mongoose.connect(process.env.MONGODB_ATLAS, {
+    useNewUrlParser: true,
+    useFindAndModify: false
+  });
+
+
+} else{
+mongoose.connect("mongodb://localhost/workout", {
   useNewUrlParser: true,
   useFindAndModify: false
 });
+}
 
 // routes
 app.use(require("./routes/api.js"));

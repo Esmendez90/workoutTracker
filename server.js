@@ -14,10 +14,11 @@ app.use(express.static("public"));
 
 //mongodb+srv://esteban_:Meg@deth1@cluster0.dgfzn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
-//   useNewUrlParser: true,
-//   useFindAndModify: false
-// });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+  useNewUrlParser: true,
+  useFindAndModify: false
+});
+
 if(process.env.MONGODB_ATLAS.length > 0){
   mongoose.connect(process.env.MONGODB_ATLAS, {
     useNewUrlParser: true,

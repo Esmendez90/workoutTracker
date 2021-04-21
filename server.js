@@ -19,19 +19,17 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useFindAndModify: false
 });
 
-if(process.env.MONGODB_ATLAS.length > 0){
-  mongoose.connect(process.env.MONGODB_ATLAS, {
-    useNewUrlParser: true,
-    useFindAndModify: false
-  });
-
-
-} else{
-mongoose.connect("mongodb://localhost/workout", {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
-}
+// if (process.env.MONGODB_ATLAS.length > 0) {
+//   mongoose.connect(process.env.MONGODB_ATLAS, {
+//     useNewUrlParser: true,
+//     useFindAndModify: false,
+//   });
+// } else {
+//   mongoose.connect("mongodb://localhost/workout", {
+//     useNewUrlParser: true,
+//     useFindAndModify: false,
+//   });
+// }
 
 // routes
 app.use(require("./routes/api.js"));
